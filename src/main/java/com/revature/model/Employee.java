@@ -1,12 +1,12 @@
-package com.revature.main;
+package com.revature.model;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "managers")
-public class Manager {
+@Table(name = "employees")
+public class Employee {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private int id;
 
@@ -16,8 +16,8 @@ public class Manager {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "email")
-    private String email;
+    @Column(name = "role")
+    private String role;
 
     @Column(name = "username")
     private String username;
@@ -25,15 +25,27 @@ public class Manager {
     @Column(name = "password")
     private String password;
 
-    public Manager()
-    {}
+    public String getRole() {
+        return role;
+    }
 
-    public Manager(int id, String firstName, String lastName, String email, String username, String password) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -61,37 +73,27 @@ public class Manager {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
+    public Employee(){
+
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
+    public Employee(String firstName, String lastName, String username, String password, String role)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
         this.password = password;
+        this.role = role;
+
     }
 
     @Override
     public String toString() {
-        return "com.revature.main.Manager{" +
+        return "com.revature.main.Employee{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 }
